@@ -1,0 +1,55 @@
+import socket
+
+def check_port(host, port):
+    """Check if a specific port is open on the given host."""
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.settimeout(1)
+            result = sock.connect_ex((host, port))
+            if result == 0:
+                print(f"Port {port} is open")
+    except socket.error as e:
+        print(f"Error connecting to {host}:{port} - {e}")
+
+def scan_ports(host, ports):
+    print(f"\nScanning {host} for open ports...")
+    for port in ports:
+        check_port(host, port)
+    print("Scan complete.\n")
+
+if __name__ == "__main__":
+    user_input = input("Enter the hostname or IP address to scan: ")
+    
+    try:
+        target_host = socket.gethostbyname(user_input)
+        print(f"Resolved host '{user_input}' to {target_host}")
+    except socket.gaierror:
+        print(f"Could not resolve hostname: {user_input}")
+        exit()
+
+    port_input = input("Enter ports to check (e.g., 80,443 or 1-100): ")
+
+    ports_to_scan = []
+
+    if '-' in port_input:
+        try:
+            start, end = map(int, port_input.split('-'))
+            ports_to_scan = range(start, end + 1)
+        except ValueError:
+            print("Invalid port range format.")
+            exit()
+    elif ',' in port_input:
+        try:
+            ports_to_scan = [int(p.strip()) for p in port_input.split(',')]
+        except ValueError:
+            print("Invalid comma-separated port list.")
+            exit()
+    else:
+        try:
+            ports_to_scan = [int(port_input)]
+        except ValueError:
+            print("Invalid port input.")
+            exit()
+
+    if ports_to_scan:
+        scan_ports(target_host, ports_to_scan)
