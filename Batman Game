@@ -48,4 +48,3 @@ if suit == "black".lower():
                 print("Congratulations you have survived Gotham")
             elif villian_group2 == "Catwoman".lower():
                 print("You fall in love with Catwoman ... GAME OVER")
-Displaying Python Batman Script(Incomplete).txt.
