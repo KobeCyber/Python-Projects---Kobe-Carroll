@@ -1,0 +1,51 @@
+print('''
+        _,    _   _    ,_
+  .o888P     Y8o8Y     Y888o.
+ d88888      88888      88888b
+d888888b_  _d88888b_  _d888888b
+8888888888888888888888888888888
+8888888888888888888888888888888
+YJGS8P"Y888P"Y888P"Y888P"Y8888P
+ Y888   '8'   Y8P   '8'   888Y
+  '8o          V          o8'
+    `                     `
+
+''')
+
+print("Welcome to the Batcave.\n","your mission is to survive Gotham")
+
+choice_of_suit = input("What bat suit do you want to choose? black or red").lower()
+if choice_of_suit == "Red" or choice_of_suit == "red":
+    suit = "Red".lower()
+    print("You have chosen Nightmare Batman")
+elif choice_of_suit == "Black" or choice_of_suit ==  "black":
+    suit = "Black".lower()
+    print ("You have chosen Classic Batman")
+else:
+        print("Choice is invalid")
+        suit = "null"
+        
+if suit == "red".lower():
+    villian_group1 = input("Which villain should we beat first? Iceman or Harley").lower()
+    if villian_group1 == "harley":
+        print("Should've chose Iceman, I'm not some weak little girl... GAME OVER")
+    elif villian_group1 == "iceman":
+            print("Wow that was easy... you beat him")
+            villian_group2 = input("Who is next?: Joker or Ivy").lower()
+            if villian_group2 == "Joker":
+                print("Congratulations you have survived Gotham")
+            elif villian_group2 == "Ivy":
+                print("Poison Ivy sprays you with poison and you die... GAME OVER")
+
+if suit == "black".lower():
+    villian_group1 = input("Which villain should we beat first? Penguin or Scarecrow").lower()
+    if villian_group1 == "scarecrow".lower():
+        print("You've beeen hit with nightmare gas... GAME OVER!!!")
+    elif villian_group1 == "penguin".lower():
+            print("Wow that was easy... you beat him")
+            villian_group2 = input("Who is next?: Joker or Catwoman").lower()
+            if villian_group2 == "Joker".lower():
+                print("Congratulations you have survived Gotham")
+            elif villian_group2 == "Catwoman".lower():
+                print("You fall in love with Catwoman ... GAME OVER")
+Displaying Python Batman Script(Incomplete).txt.
